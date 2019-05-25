@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {ChangeDetectorRef, Injectable} from '@angular/core';
 import {CurrencyEnum} from './currencyEnum';
 import {HttpClient} from '@angular/common/http';
 import {IRate} from './IRate';
@@ -6,10 +6,11 @@ import {IRate} from './IRate';
 @Injectable({
   providedIn: 'root'
 })
-export class ExchangeService {
+export class dataService {
 
   constructor(private http: HttpClient) {
   }
+  public pageArray: IRate[][] = [];
   public modalWindowIsShown = false;
   public currencies: CurrencyEnum[] = Object.values(CurrencyEnum);
   public currenciesFrom: CurrencyEnum[] = Object.values(CurrencyEnum);
@@ -28,11 +29,20 @@ export class ExchangeService {
   public selectFrom(value: CurrencyEnum) {
     this.currenciesTo = this.currencies
         .map((i, index, array) => i === value ? array.splice(i, 1) : i);
-    console.log(this.currenciesTo);
   }
   public selectTo(value: CurrencyEnum) {
     this.currenciesFrom = this.currencies
         .map((i, index, array) => i === value ? array.splice(i, 1) : i);
-    console.log(this.currenciesFrom);
+  }
+  public updatePageArray() {
+    this.pageArray = this.rates.reduce((acc, cur, currentIndex) => {
+      if (currentIndex % 10 === 0) {
+        let newGroup = [cur];
+        acc.push(newGroup);
+      } else {
+        acc[Math.floor(currentIndex / 10)].push(cur);
+      }
+      return acc;
+    }, []);
   }
 }

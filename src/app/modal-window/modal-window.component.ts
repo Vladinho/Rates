@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ExchangeService} from '../exchange.service';
+import {dataService} from '../exchange.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IRate} from '../IRate';
@@ -11,7 +11,8 @@ import {IRate} from '../IRate';
 })
 export class ModalWindowComponent implements OnInit {
 
-  constructor(private exchangeService: ExchangeService, private router: Router) { }
+  constructor(private dataService: dataService,
+              private router: Router) { }
   currencyForm: FormGroup;
   selectFrom: FormControl;
   selectTo: FormControl;
@@ -24,7 +25,7 @@ export class ModalWindowComponent implements OnInit {
     });
   }
   private close() {
-    this.exchangeService.modalWindowIsShown = false;
+    this.dataService.modalWindowIsShown = false;
   }
 
   private toResults() {
@@ -33,16 +34,17 @@ export class ModalWindowComponent implements OnInit {
   }
 
   onSubmit() {
-    this.exchangeService.getRate(this.selectFrom.value, this.selectTo.value).subscribe((val) => {
+    this.dataService.getRate(this.selectFrom.value, this.selectTo.value).subscribe((val) => {
           let rate: IRate = {
             rate: Object.values(val.rates)[0],
             date: val.date,
             from: val.base,
             to: Object.keys(val.rates)[0]
           };
-          this.exchangeService.rates.unshift(rate);
-          this.exchangeService.lastRate = rate;
-          this.exchangeService.latestSameRates = this.exchangeService.rates
+          this.dataService.rates.unshift(rate);
+          this.dataService.updatePageArray();
+          this.dataService.lastRate = rate;
+          this.dataService.latestSameRates = this.dataService.rates
               .filter(i => i.from === rate.from && i.to === rate.to);
         },
         (e) => {

@@ -7,7 +7,7 @@ import { MainButtonComponent } from './main-button/main-button.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { ResultsComponent } from './results/results.component';
 import {Routes, RouterModule} from '@angular/router';
-import {ExchangeService} from './exchange.service';
+import {dataService} from './exchange.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [ExchangeService],
+  providers: [dataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

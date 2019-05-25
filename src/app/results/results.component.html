@@ -5,7 +5,7 @@
     <th>DATE</th>
     <th>RATE</th>
   </tr>
-  <tr *ngFor="let item of pageArray[currentPageIndex]; let i = index">
+  <tr *ngFor="let item of dataService.pageArray[currentPageIndex]; let i = index">
     <td>{{item.from}}/{{item.to}}</td>
     <td>{{item.date}}</td>
     <td>{{item.rate}}</td>
@@ -13,8 +13,8 @@
 </table>
 <div class="pagination">
   <button class="pagination__button"
-          *ngFor="let item of pageArray; let i = index"
-          (click)="currentPageIndex=i"
+          *ngFor="let item of dataService.pageArray; let i = index"
+          (click)="currentPageIndex = i"
           [ngClass]="{'pagination__button--active': i === currentPageIndex}"
   >{{i + 1}}</button>
 </div>
