@@ -1,3 +1,23 @@
 .buttons {
   text-align: center;
 }
+
+table {
+  margin-bottom: 20px;
+}
+
+.pagination {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    border-radius: 50%;
+    outline: none !important;
+
+    &--active {
+      background-color: aqua;
+    }
+  }
+}

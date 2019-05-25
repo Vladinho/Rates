@@ -79,6 +79,7 @@
     }
   }
 }
+
 .table {
   &__cell {
     height: 20px;
@@ -91,4 +92,11 @@
 
 .buttons {
   flex-basis: 100%;
+}
+
+.table-container {
+  min-height: 100px;
+  max-height: calc(100vh - 300px);
+  overflow: auto;
+  margin-bottom: 20px;
 }

@@ -15,19 +15,21 @@
     </select>
     <button [disabled]="!selectFrom.value || !selectTo.value">Submit</button>
   </form>
-  <table class="table" *ngIf="exchangeService.lastRate.rate">
-    <tr>
-      <th>{{exchangeService.lastRate.from}}</th>
-      <th>VS</th>
-      <th>{{exchangeService.lastRate.to}}</th>
-    </tr>
-    <tr>
-      <td colspan="3" class="table__cell table__cell--center">List of latest <strong>{{exchangeService.latestSameRates.length}}</strong> results</td>
-    </tr>
-    <tr *ngFor="let item of exchangeService.latestSameRates">
-      <td colspan="3" class="table__cell table__cell--center">{{item.date}} <strong>{{item.rate}}</strong></td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="table" *ngIf="exchangeService.lastRate.rate">
+      <tr>
+        <th>{{exchangeService.lastRate.from}}</th>
+        <th>VS</th>
+        <th>{{exchangeService.lastRate.to}}</th>
+      </tr>
+      <tr>
+        <td colspan="3" class="table__cell table__cell--center">List of latest <strong>{{exchangeService.latestSameRates.length}}</strong> results</td>
+      </tr>
+      <tr *ngFor="let item of exchangeService.latestSameRates">
+        <td colspan="3" class="table__cell table__cell--center">{{item.date}} <strong>{{item.rate}}</strong></td>
+      </tr>
+    </table>
+  </div>
   <div class="buttons">
     <button class="modal-window__close" (click)="close()"></button>
     <button (click)="toResults()">To results</button>

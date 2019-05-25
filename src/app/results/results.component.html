@@ -5,13 +5,19 @@
     <th>DATE</th>
     <th>RATE</th>
   </tr>
-  <tr *ngFor="let item of exchangeService.rates">
-
+  <tr *ngFor="let item of pageArray[currentPageIndex]; let i = index">
     <td>{{item.from}}/{{item.to}}</td>
     <td>{{item.date}}</td>
     <td>{{item.rate}}</td>
   </tr>
 </table>
+<div class="pagination">
+  <button class="pagination__button"
+          *ngFor="let item of pageArray; let i = index"
+          (click)="currentPageIndex=i"
+          [ngClass]="{'pagination__button--active': i === currentPageIndex}"
+  >{{i + 1}}</button>
+</div>
 <div class="buttons">
   <button (click)="back()">Back</button>
   <button (click)="open()">Open calculator</button>
