@@ -11,7 +11,7 @@
     <td>{{item.rate}}</td>
   </tr>
 </table>
-<div class="pagination">
+<div class="pagination" *ngIf="dataService.pageArray.length > 1">
   <button class="pagination__button"
           *ngFor="let item of dataService.pageArray; let i = index"
           (click)="currentPageIndex = i"
