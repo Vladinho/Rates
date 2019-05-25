@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../exchange.service';
+import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IRate} from '../IRate';
@@ -33,7 +33,7 @@ export class ModalWindowComponent implements OnInit {
     this.close();
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.dataService.getRate(this.selectFrom.value, this.selectTo.value).subscribe((val) => {
           let rate: IRate = {
             rate: Object.values(val.rates)[0],
@@ -41,11 +41,7 @@ export class ModalWindowComponent implements OnInit {
             from: val.base,
             to: Object.keys(val.rates)[0]
           };
-          this.dataService.rates.unshift(rate);
-          this.dataService.updatePageArray();
-          this.dataService.lastRate = rate;
-          this.dataService.latestSameRates = this.dataService.rates
-              .filter(i => i.from === rate.from && i.to === rate.to);
+          this.dataService.update(rate);
         },
         (e) => {
           console.error('Error: ', e);

@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
-import {DataService} from '../exchange.service';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-main-button',

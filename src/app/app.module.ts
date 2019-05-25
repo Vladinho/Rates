@@ -7,7 +7,7 @@ import { MainButtonComponent } from './main-button/main-button.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { ResultsComponent } from './results/results.component';
 import {Routes, RouterModule} from '@angular/router';
-import {DataService} from './exchange.service';
+import {DataService} from './data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 

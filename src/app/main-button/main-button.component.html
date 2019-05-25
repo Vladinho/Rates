@@ -3,4 +3,4 @@
   <span class="currency__field">{{dataService.lastRate.rate}}</span>
   <span class="currency__field">{{dataService.lastRate.to ? dataService.lastRate.to : '--'}}</span>
 </div>
-<button class="main-button" (click)="openModalWindow()">Open calculator</button>
+<button [disabled]="dataService.modalWindowIsShown" class="main-button" (click)="openModalWindow()">Open calculator</button>

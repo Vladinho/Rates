@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../exchange.service';
+import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 import {IRate} from '../IRate';
 
