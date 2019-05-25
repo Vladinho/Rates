@@ -3,16 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainButtonComponent } from './main-button/main-button.component';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { ResultsComponent } from './results/results.component';
+import {Routes, RouterModule} from '@angular/router';
+import {ExchangeService} from './exchange.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+
+const appRoutes: Routes = [
+  {path: '', component: MainButtonComponent},
+  {path: 'results', component: ResultsComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainButtonComponent,
+    ModalWindowComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ExchangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,94 @@
+.modal-window {
+  visibility: hidden;
+  padding: 1em;
+  opacity: 0;
+  transition: all .5s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: calc(100vw - 40px);
+  width: 400px;
+  box-shadow: 0 0 10px gray;;
+  min-height: 100px;
+  border-radius: 10px;
+  background-color: white;
+
+  &__title {
+    flex-basis: 100%;
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    outline: none !important;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background-color: black;
+      width: 20px;
+      height: 1px;
+      left: 0;
+      top: 50%;
+      transform: rotate(-45deg);
+      transform-origin: center center;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: black;
+      width: 20px;
+      height: 1px;
+      left: 0;
+      top: 50%;
+      transform: rotate(45deg);
+      transform-origin: center center;
+    }
+  }
+}
+
+.form {
+  margin-bottom: 20px;
+  width: 100%;
+
+  &__control {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.table {
+  &__cell {
+    height: 20px;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}
+
+.buttons {
+  flex-basis: 100%;
+}

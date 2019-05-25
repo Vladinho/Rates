@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+button {
+  margin-right: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  table-layout: fixed;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+caption {
+  margin-bottom: 20px;
+}

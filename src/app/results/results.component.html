@@ -1,0 +1,18 @@
+<table>
+  <caption>CURRENCY TABLE</caption>
+  <tr>
+    <th>CURRENCY FROM / CURRENCY TO</th>
+    <th>DATE</th>
+    <th>RATE</th>
+  </tr>
+  <tr *ngFor="let item of exchangeService.rates">
+
+    <td>{{item.from}}/{{item.to}}</td>
+    <td>{{item.date}}</td>
+    <td>{{item.rate}}</td>
+  </tr>
+</table>
+<div class="buttons">
+  <button (click)="back()">Back</button>
+  <button (click)="open()">Open calculator</button>
+</div>

@@ -1,0 +1,6 @@
+<div class="currency">
+  <span class="currency__field">{{exchangeService.lastRate.from ? exchangeService.lastRate.from : '--'}}</span>
+  <span class="currency__field">{{exchangeService.lastRate.rate}}</span>
+  <span class="currency__field">{{exchangeService.lastRate.to ? exchangeService.lastRate.to : '--'}}</span>
+</div>
+<button class="main-button" (click)="openModalWindow()">Open calculator</button>
