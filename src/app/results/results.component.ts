@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {dataService} from '../exchange.service';
+import {DataService} from '../exchange.service';
 import {Router} from '@angular/router';
 import {IRate} from '../IRate';
 
@@ -10,15 +10,12 @@ import {IRate} from '../IRate';
 })
 export class ResultsComponent {
 
-  constructor(private dataService: dataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) { }
   private currentPageIndex = 0;
   public back() {
     this.router.navigateByUrl('');
   }
   public open() {
     this.dataService.modalWindowIsShown = true;
-  }
-  test() {
-    console.log(this.pageArray);
   }
 }

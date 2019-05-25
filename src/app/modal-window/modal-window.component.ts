@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {dataService} from '../exchange.service';
+import {DataService} from '../exchange.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IRate} from '../IRate';
@@ -11,7 +11,7 @@ import {IRate} from '../IRate';
 })
 export class ModalWindowComponent implements OnInit {
 
-  constructor(private dataService: dataService,
+  constructor(private dataService: DataService,
               private router: Router) { }
   currencyForm: FormGroup;
   selectFrom: FormControl;

@@ -6,10 +6,11 @@ import {IRate} from './IRate';
 @Injectable({
   providedIn: 'root'
 })
-export class dataService {
+export class DataService {
 
   constructor(private http: HttpClient) {
   }
+  private readonly PAGE_SIZE = 10;
   public pageArray: IRate[][] = [];
   public modalWindowIsShown = false;
   public currencies: CurrencyEnum[] = Object.values(CurrencyEnum);
@@ -36,11 +37,11 @@ export class dataService {
   }
   public updatePageArray() {
     this.pageArray = this.rates.reduce((acc, cur, currentIndex) => {
-      if (currentIndex % 10 === 0) {
+      if (currentIndex % this.PAGE_SIZE === 0) {
         let newGroup = [cur];
         acc.push(newGroup);
       } else {
-        acc[Math.floor(currentIndex / 10)].push(cur);
+        acc[Math.floor(currentIndex / this.PAGE_SIZE)].push(cur);
       }
       return acc;
     }, []);

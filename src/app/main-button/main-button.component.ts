@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
-import {dataService} from '../exchange.service';
+import {DataService} from '../exchange.service';
 
 @Component({
   selector: 'app-main-button',
@@ -11,7 +11,7 @@ export class MainButtonComponent {
   private to = '--';
   private rate: number;
 
-  constructor(private dataService: dataService) {
+  constructor(private dataService: DataService) {
   }
   public openModalWindow() {
         this.dataService.modalWindowIsShown = true;
