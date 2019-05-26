@@ -6,6 +6,11 @@ table {
   margin-bottom: 20px;
 }
 
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .pagination {
   padding: 20px;
   display: flex;
