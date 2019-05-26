@@ -13,5 +13,11 @@
       "app",
       "kebab-case"
     ]
-  }
+  },
+  "ordered-imports": [
+    true,
+    {
+      "named-imports-order": "lowercase-last"
+    }
+  ]
 }
