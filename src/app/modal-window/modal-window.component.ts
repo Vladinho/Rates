@@ -3,6 +3,7 @@ import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IRate} from '../IRate';
+import {CurrencyEnum} from '../currencyEnum';
 
 @Component({
   selector: 'app-modal-window',
@@ -34,17 +35,20 @@ export class ModalWindowComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.dataService.isLoading = true;
     this.dataService.getRate(this.selectFrom.value, this.selectTo.value).subscribe((val) => {
           let rate: IRate = {
-            rate: Object.values(val.rates)[0],
+            rate: Object.values(val.rates)[0] as number,
             date: val.date,
             from: val.base,
-            to: Object.keys(val.rates)[0]
+            to: Object.keys(val.rates)[0] as CurrencyEnum
           };
           this.dataService.update(rate);
+          this.dataService.isLoading = false;
         },
         (e) => {
           console.error('Error: ', e);
+          this.dataService.isLoading = false;
         });
   }
 }

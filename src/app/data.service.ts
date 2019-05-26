@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Injectable} from '@angular/core';
 import {CurrencyEnum} from './currencyEnum';
 import {HttpClient} from '@angular/common/http';
 import {IRate} from './IRate';
+import {Observable} from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,10 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
   private readonly PAGE_SIZE = 10;
+  public isLoading = false;
   public pageArray: IRate[][] = [];
   public modalWindowIsShown = false;
   public currencies: CurrencyEnum[] = Object.values(CurrencyEnum);
-  public currenciesFrom: CurrencyEnum[] = Object.values(CurrencyEnum);
-  public currenciesTo: CurrencyEnum[] = Object.values(CurrencyEnum);
   public rates: IRate[] = [];
   public latestSameRates: IRate[] = [];
   public lastRate: IRate = {
@@ -24,7 +24,7 @@ export class DataService {
     from: null,
     to: null
   };
-  public getRate(from: CurrencyEnum, to: CurrencyEnum) {
+  public getRate(from: CurrencyEnum, to: CurrencyEnum): Observable<any> {
     return this.http.get(`https://api.exchangeratesapi.io/latest?base=${from}&symbols=${to}`);
   }
   public updatePageArray() {

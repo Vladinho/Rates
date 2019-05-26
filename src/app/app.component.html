@@ -1,2 +1,10 @@
-<router-outlet></router-outlet>
-<app-modal-window></app-modal-window>
+<main>
+    <div class="lds-ring" [ngClass]="{'lds-ring--is-loading': dataService.isLoading}">
+        <div class="lds-ring__element"></div>
+        <div class="lds-ring__element"></div>
+        <div class="lds-ring__element"></div>
+        <div class="lds-ring__element"></div>
+    </div>
+    <router-outlet></router-outlet>
+    <app-modal-window></app-modal-window>
+</main>

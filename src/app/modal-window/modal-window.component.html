@@ -3,13 +3,13 @@
   <form class="form" [formGroup]="currencyForm" (ngSubmit)="onSubmit()">
     <select class="form__control" name="currency" formControlName="selectFrom" id="CurrencyFrom">
       <option value="" disabled selected>Select rate from</option>
-      <ng-container *ngFor="let item of dataService.currenciesFrom">
+      <ng-container *ngFor="let item of dataService.currencies">
         <option *ngIf="item !== selectTo.value" value={{item}}>{{item}}</option>
       </ng-container>
     </select>
     <select class="form__control" name="currency" formControlName="selectTo" id="CurrencyTo">
       <option value="" disabled selected>Select rate to</option>
-      <ng-container *ngFor="let item of dataService.currenciesTo">
+      <ng-container *ngFor="let item of dataService.currencies">
         <option *ngIf="item !== selectFrom.value" value={{item}}>{{item}}</option>
       </ng-container>
     </select>

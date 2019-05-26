@@ -24,3 +24,58 @@ table, th, td {
 caption {
   margin-bottom: 20px;
 }
+
+.lds-ring {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(white, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: all 0.5s;
+
+  &--is-loading {
+    visibility: visible;
+    opacity: 1;
+
+    .lds-ring__element {
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+  }
+
+  &__element {
+    box-sizing: border-box;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid black;
+    border-radius: 50%;
+    border-color: black transparent transparent transparent;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
